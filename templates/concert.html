@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Home - Konser Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="font-roboto bg-gray-100">
+    <header class="bg-blue-600 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Pembelian Tiket Konser</h1>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a class="hover:underline" href="{{ url_for('halaman_home') }}">Home</a></li>
+            <li><a class="hover:underline" href="{{ url_for('halaman_concert') }}">Concerts</a></li>
+            <li><a class="hover:underline" href="{{ url_for('halaman_contact') }}">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">Event Terpopuler</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Featured Event 1 -->
+          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+            <img src="https://storage.googleapis.com/a1aa/image/OtsffTvOqGuYnkvFoHrPxsmeO89wNzRRzll8MTfxtiCOjTjPB.jpg" alt="HINDIA Concert" class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">HINDIA</h3>
+              <p class="text-gray-600 mb-4">01 JANUARI 2025</p>
+              <a href="{{ url_for('halaman_hindia') }}" class="text-blue-600 font-bold hover:underline">Beli Tiket →</a>
+            </div>
+          </div>
+
+          <!-- Featured Event 2 -->
+          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+            <img src="https://storage.googleapis.com/a1aa/image/EjO5cVBF5SZZLlajSKWUJkVB1PXwyt7sCw4vLAaXM6aNONeJA.jpg" alt="BERNADYA Concert" class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">BERNADYA</h3>
+              <p class="text-gray-600 mb-4">05 DESEMBER 2025</p>
+              <a href="{{ url_for('halaman_bernadya') }}" class="text-blue-600 font-bold hover:underline">Beli Tiket →</a>
+            </div>
+          </div>
+
+          <!-- Featured Event 3 -->
+          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+            <img src="https://storage.googleapis.com/a1aa/image/UDdZOepHaaw8QicUT65yM9c6wtc82QXI2y76MfXmLdM2404TA.jpg" alt="DENNY CAKNAN Concert" class="w-full h-48 object-cover" />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">DENNY CAKNAN</h3>
+              <p class="text-gray-600 mb-4">10 DESEMBER 2025</p>
+              <a href="{{ url_for('halaman_denny_caknan') }}" class="text-blue-600 font-bold hover:underline">Beli Tiket →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Tentang Kami</h3>
+            <p class="text-gray-400">Platform penjualan tiket konser terpercaya dengan berbagai pilihan event musik terbaik di Indonesia.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white">Syarat dan Ketentuan</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Ikuti Kami</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+          <p>&copy; 2025 Konser Ticket. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

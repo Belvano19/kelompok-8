@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Home - Konser Ticket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body class="font-roboto bg-gray-100">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Pembelian Tiket Konser</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a class="hover:underline" href="{{ url_for('halaman_home') }}">Home</a></li>
+                    <li><a class="hover:underline" href="{{ url_for('halaman_concert') }}">Concerts</a></li>
+                    <li><a class="hover:underline" href="{{ url_for('halaman_contact') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">Hubungi Kami</h2>
+        <div class="max-w-xl mx-auto">
+            <div class="flex flex-col space-y-4">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-phone text-blue-600"></i>
+                    <p>+62 877-3423-7040</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-envelope text-blue-600"></i>
+                    <p>info@konserticket.com</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                    <p>Jl. Ring Road Utara, Condong Catur, Yogyakarta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer class="bg-gray-800 text-white py-8">
+<div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+            <h3 class="text-xl font-bold mb-4">Tentang Kami</h3>
+            <p class="text-gray-400">Platform penjualan tiket konser terpercaya dengan berbagai pilihan event musik terbaik di Indonesia.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Syarat dan Ketentuan</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Kebijakan Privasi</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-4">Ikuti Kami</h3>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+        <p>&copy; 2025 Konser Ticket. All rights reserved @KELOMPOK 8 UAS PEMROGRAMAN WEB 23TK01.</p>
+    </div>
+</div>
+</footer>
+</body>
+</html>

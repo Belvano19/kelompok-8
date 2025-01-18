@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pembelian Tiket - Konser Hindia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="font-roboto bg-gray-100">
+    <header class="bg-blue-600 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Pembelian Tiket Konser</h1>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a class="hover:underline" href="{{ url_for('halaman_home') }}">Home</a></li>
+            <li><a class="hover:underline" href="{{ url_for('halaman_concert') }}">Concerts</a></li>
+            <li><a class="hover:underline" href="{{ url_for('halaman_contact') }}">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="py-16">
+      <form action="{{ url_for('proses_tambah') }}" method="POST" id="ticket-form" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-3xl font-bold mb-8 text-center">Formulir Pembelian Tiket</h2>
+        <div class="mb-4">
+          <label for="concert-name" class="block text-gray-700 font-bold mb-2">Nama Konser</label>
+          <input type="text" id="concert-name" name="nama_konser" value="Konser Hindia" readonly class="border border-gray-300 p-2 w-full rounded" />
+        </div>
+        <div class="mb-4">
+          <label for="name" class="block text-gray-700 font-bold mb-2">Nama Lengkap</label>
+          <input type="text" id="name" name="nama_lengkap" required class="border border-gray-300 p-2 w-full rounded" />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+          <input type="email" id="email" name="email" required class="border border-gray-300 p-2 w-full rounded" />
+        </div>
+        <div class="mb-4">
+          <label for="phone-number" class="block text-gray-700 font-bold mb-2">Nomer Handphone (Bill akan dikirimkan ke Nomer Handphone)</label>
+          <input type="text" id="phone-number" name="nomer_handphone" required class="border border-gray-300 p-2 w-full rounded" />
+        </div>
+        <div class="mb-4">
+          <label for="ticket-quantity" class="block text-gray-700 font-bold mb-2">Jumlah Tiket</label>
+          <input type="number" id="ticket-quantity" name="jumlah_tiket" min="1" required class="border border-gray-300 p-2 w-full rounded" onchange="updateTotalPrice()" />
+        </div>
+        <div class="mb-4">
+          <label for="ticket-price" class="block text-gray-700 font-bold mb-2">Harga per Tiket</label>
+          <input type="text" id="ticket-price" value="Rp. 250.000" readonly class="border border-gray-300 p-2 w-full rounded" />
+        </div>
+        <div class="mb-4">
+          <label for="total-price" class="block text-gray-700 font-bold mb-2">Total Harga</label>
+          <input type="text" id="total-price" name="total_harga" value="Rp. 250.000" readonly class="border border-gray-300 p-2 w-full rounded" />
+        </div>
+        <div class="mb-4">
+          <label for="payment-method" class="block text-gray-700 font-bold mb-2">Metode Pembayaran</label>
+          <select id="payment-method" name="payment-method" required class="border border-gray-300 p-2 w-full rounded" disabled>
+            <option value="bank-transfer">QRIS</option>
+          </select>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Beli Tiket</button>
+      </form>
+      <div class="mt-4 text-center">
+        <a href="{{ url_for('halaman_concert') }}" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-300">Kembali ke Concert</a>
+      </div>
+    </main>
+
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden" id="barcode-modal">
+      <div class="bg-white p-6 rounded shadow-lg w-11/12 md:w-1/2 text-center">
+        <h3 class="text-2xl font-bold mb-4">Scan Barcode Untuk Pembayaran</h3>
+        <img alt="Barcode for payment" src="qr_pembayaran.jpg" style="height: 500px; width: 500px" class="mb-4" />
+        <p class="mt-4">Setelah pembayaran, harap konfirmasi pada nomor WhatsApp berikut:</p>
+        <a class="bg-green-600 text-white px-4 py-2 rounded mt-2 inline-block" href="https://wa.me/6287734237040">Konfirmasi Melalui WhatsApp</a>
+        <button class="bg-red-600 text-white px-4 py-2 rounded mt-4" onclick="closeBarcodeModal()">Tutup</button>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2025 Konser Ticket. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function showBarcode(event) {
+        event.preventDefault(); // Mencegah pengiriman formulir
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const quantity = document.getElementById("ticket-quantity").value;
+
+        if (name && email && quantity) {
+          // Tampilkan modal Barcode
+          document.getElementById("barcode-modal").classList.remove("hidden");
+        } else {
+          alert("Harap lengkapi semua field.");
+        }
+      }
+
+      function closeBarcodeModal() {
+        document.getElementById("barcode-modal").classList.add("hidden");
+      }
+
+      function updateTotalPrice() {
+        const quantity = document.getElementById("ticket-quantity").value;
+        const pricePerTicket = 250000; // Harga per tiket dalam angka
+        const totalPrice = quantity * pricePerTicket;
+        document.getElementById("total-price").value = "Rp. " + formatRupiah(totalPrice);
+      }
+
+      function formatRupiah(angka) {
+        return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Format angka dengan titik
+      }
+    </script>
+  </body>
+</html>

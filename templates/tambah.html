@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Penjualan</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Tambah Penjualan</h1>
+      <form action="{{ url_for('proses_tambah') }}" method="POST">
+        <div class="form-group">
+          <label for="nama_lengkap">Nama Lengkap</label>
+          <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="nomer_handphone">Nomor Handphone</label>
+          <input type="text" class="form-control" id="nomer_handphone" name="nomer_handphone" required />
+        </div>
+        <div class="form-group">
+          <label for="jumlah_tiket">Jumlah Tiket</label>
+          <input type="number" class="form-control" id="jumlah_tiket" name="jumlah_tiket" required />
+        </div>
+        <div class="form-group">
+          <label for="total_harga">Total Harga</label>
+          <input type="number" class="form-control" id="total_harga" name="total_harga" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="nama_konser">Nama Konser</label>
+          <input type="text" class="form-control" id="nama_konser" name="nama_konser" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Tambah</button>
+        <a href="{{ url_for('halaman_awal') }}" class="btn btn-secondary">Kembali</a>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
