@@ -62,7 +62,7 @@ def halaman_contact():
 def halaman_hindia():
     return render_template('hindia.html')
 
-@app.route('/denny caknan')
+@app.route('/denny-caknan')  # Updated route
 def halaman_denny_caknan():
     return render_template('denny caknan.html')
 
